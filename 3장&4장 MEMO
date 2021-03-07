@@ -1,0 +1,21 @@
+Controller 요청 > Service 호출 > Repository호출
+
+1. domain>posts 패키지
+ - Posts
+   테이블에 링크될 클래스 선언
+   @Getter :  get메소드생성
+   @NoArgsConstructor : 기본생성자 자동 추가
+   @Entity : 테이블과 링크될 클래스 선언
+   @Id,@Column : PK, 칼럼타입, 길이등 선언
+   @Builder : 해당 클래스의 빌더패턴 클래스를 생성
+ - PostsRepository
+   JpaRepository<Entity클래스, PK타입>상속하면 CRUD메소드가 자동 생성
+   
+2. web 패키지
+ - PostsApiController : API요청을 받음(WEB레이어)
+  
+3. service>posts 패키지
+ - PostsService : 트랜젝션, 도메인 기능간의 순서 보장
+ 
+4. web>dto 패키지
+ - postsSaveRequestDto : 계층간 데이터 교환을 위한 객체
