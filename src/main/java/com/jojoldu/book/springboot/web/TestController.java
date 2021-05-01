@@ -10,28 +10,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RequiredArgsConstructor
 @Controller
-public class IndexController {
+public class TestController {
 
     private final PostsService postsService;
 
-    @GetMapping("/")
+    @GetMapping("/list")
     public String index(Model model) { //model : DB에서 가져온 결과를 posts로 index.mustache에 전달
         model.addAttribute("posts", postsService.findAllDesc());
 
-        return "index";
-    }
-    
-    @GetMapping("/posts/save")
-    public String postsSave() {
-        return "post-save";
+        return "index_test";
     }
 
-    @GetMapping("/posts/update/{id}")
+    @GetMapping("/posts/savetest")
+    public String postsSave() {
+        return "posts_test";
+    }
+
+    @GetMapping("/posts/updatetest/{id}")
     public String postsUpdate(@PathVariable Long id, Model model) {
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
+        model.addAttribute("id", id);
 
-        return "posts-update";
+        return "posts_test";
     }
 
 }

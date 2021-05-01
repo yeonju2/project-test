@@ -26,9 +26,9 @@ public class PostsService {
     @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto) {
         Posts posts = postsRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. id=" + id));
 
-        posts.update(requestDto.getTitle(), requestDto.getContent());
+        posts.update(requestDto.getTitle(), requestDto.getContent(), requestDto.getComment());
 
         return id;
     }
@@ -36,7 +36,7 @@ public class PostsService {
     @Transactional(readOnly = true)
     public PostsResponseDto findById(Long id) {
         Posts entity = postsRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. id=" + id));
 
         return new PostsResponseDto(entity);
     }
@@ -44,15 +44,15 @@ public class PostsService {
     @Transactional(readOnly = true) //readOnly = true옵션을 주면 트랜잭션 범위는 유지하되, 조회기능만 남겨두어 조회속도가 개선
     public List<PostsListResponseDto> findAllDesc() {
         //map : 요소들을 특정조건에 해당하는 값으로 변환
-        return postsRepository.findAllDesc().stream()
-                .map(PostsListResponseDto::new)//Posts의 stream을 map을 통해 Dto에 리스트로 반환
+        return postsRepository.findAllDesc().stream()//요소 하나씩 꺼내어 처리할 수 있도록 하는 반복자
+                .map(PostsListResponseDto::new)//Posts의 stream을 map을 통해 Dto에 리스트로 변환
                 .collect(Collectors.toList());
     }
 
     @Transactional
     public void delete (Long id) {
         Posts posts = postsRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. id=" + id));
 
         postsRepository.delete(posts);
     }

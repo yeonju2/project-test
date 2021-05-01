@@ -28,21 +28,25 @@ public class Posts extends BaseTimeEntity { //BaseTimeEntity를 상속받도록 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
+    @Column(columnDefinition = "TEXT")
+    private String comment;
+
     private String author;
 
     @Builder //해당 클래스의 빌더패턴 클래스를 생성
-    public Posts(String title, String content, String author) {
+    public Posts(String title, String content, String comment, String author) {
         this.title = title;
         this.content = content;
+        this.comment = comment;
         this.author = author;
     }
 
-    public void update(String title, String content) {
+    public void update(String title, String content, String comment) {
         //업데이트 쿼리가 없음
         //JPA의 영속성 컨텍스트 때문에 가능. (영속성 컨텍스트 : 엔티티를 영구저장하는 환경)
-        //JPA의 핵심 : 엔티티가 영속성 컨텍스트에 포함되어있냐 아니냐로 갈림
-        //더티체킹?????
+        //더티체킹: 영속성컨텍스트에 저장된 마지막 데이터와 변경이 있는지 비교
         this.title = title;
         this.content = content;
+        this.comment = comment;
     }
 }
