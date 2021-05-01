@@ -1,0 +1,18 @@
+JPA : 자바 진영의 ORM 기술 표준으로, 자바에서 제공하는 API.
+      ORM을 사용하기 위해서 만든 인터페이스
+      JPA 인터페이스를 구현한 대표적인 오픈소스가 Hibernate(ORM 프레임워크)
+      
+ORM(Object Relational mapping) : DB 테이블을 자바 객체로 매핑함으로써 객체간의 관계를 바탕으로 SQL을 자동으로 생성
+ 객체와 RDB를 별도로 설계하고 그것을 맵핑하는것이 ORM.
+ -> SQL mapper : SQL과 object필드를 맵핑
+ -> ORM : DB데이터와 object필드를 맵핑
+ 
+JPA 동작원리 : JPA는 애플리케이션과 JDBC 사이에서 동작한다.
+              JPA를 사용하면, JPA 내부에서 JDBC API를 사용하여 SQL을 호출하여 DB와 통신한다.
+              https://gmlwjd9405.github.io/2019/08/04/what-is-jpa.html
+              
+영속성 컨텍스트의 원리
+1. 트랜젝션이 발생하면 엔티티 매니저가 생성
+2. DB에서 트랜젝션에 대한 엔티티(데이터)를 가져오고, 이를 스냅샷을 만들어서 영속성 컨텍스트에 저장
+3. 트랜젝션을 커밋하면서 더티체킹하고 업데이트
+   더티체킹 = 상태변경검사
