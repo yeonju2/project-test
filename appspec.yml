@@ -1,0 +1,9 @@
+# CodeDeploy version : 프로젝트 버전이 아니므로 다른 버전 사용시 오류
+version: 0.0
+os: linux
+files:
+  # CodeDeploy에 전달한 파일 중 destination으로 이동시킬 대상
+  # / : 전체 파일
+  - source: /
+    destination: /home/ec2-user/app/step2/zip/
+    overwrite: yes
