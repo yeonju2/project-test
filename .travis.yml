@@ -16,3 +16,20 @@ before_install:
   - chmod +x gradlew
 
 script: "./gradlew clean build"
+
+before_deploy:
+  - zip -r project-test *
+  - mkdir -p deploy
+  - mv project-test.zip deploy/project-test.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+    bucket: order7bucket
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait_until_deployed : true
