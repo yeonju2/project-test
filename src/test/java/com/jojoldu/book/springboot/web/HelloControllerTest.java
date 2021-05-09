@@ -1,4 +1,4 @@
-package com.jojoldu.book.springboot.web;
+/*package com.jojoldu.book.springboot.web;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,4 +38,4 @@ public class HelloControllerTest {
                 .andExpect(jsonPath("$.amount", is(amount)));
     }
 }
-
+*/

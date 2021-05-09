@@ -1,4 +1,4 @@
-package com.jojoldu.book.springboot.domain.posts;
+/*package com.jojoldu.book.springboot.domain.posts;
 
 import org.junit.After;
 import org.junit.Test;
@@ -69,3 +69,5 @@ public class PostsRepositoryTest {
         assertThat(posts.getModifiedDate()).isAfter(now);
     }
 }
+
+ */

@@ -1,3 +1,4 @@
+/*
 package com.jojoldu.book.springboot.web;
 
 //import com.fasterxml.jackson.databind.ObjectMapper;
@@ -53,15 +54,14 @@ public class PostApiControllerTest {
 
     //private MockMvc mvc;
 
-    /*
-    @Before
-    public void setup() {
-        mvc = MockMvcBuilders
-                .webAppContextSetup(context)
-                .apply(springSecurity())
-                .build();
-    }
-     */
+    //@Before
+    //public void setup() {
+    //    mvc = MockMvcBuilders
+    //            .webAppContextSetup(context)
+    //            .apply(springSecurity())
+    //            .build();
+    //}
+
 
     @After
     public void tearDown() throws Exception {
@@ -144,3 +144,4 @@ public class PostApiControllerTest {
     }
 
 }
+*/
