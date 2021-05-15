@@ -27,7 +27,7 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
 
-    bucket: order7bucket
+    bucket: yjorder7bucket
     region: ap-northeast-2
     skip_cleanup: true
     acl: private
@@ -37,7 +37,7 @@ deploy:
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-    bucket: order7bucket
+    bucket: yjorder7bucket
     key: project-test.zip
     bundle_type: zip
     application: springboot-test-YJ
